@@ -1,0 +1,55 @@
+<div>
+  <div mat-dialog-title>
+    <h3>Add Project to Site
+      <mat-icon class="pull-right" (click)="onCloseCancel()">close</mat-icon>
+    </h3>
+  </div>
+  <hr>
+  <mat-dialog-content>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
+        <mat-error>
+          Project name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 85%">
+        <input matInput placeholder="Type" [(ngModel)]="type" name="type" >
+      </mat-form-field>
+
+      <mat-icon (click)="addType()">add</mat-icon>
+
+      <div class="col-md-12">
+        <span>
+          <p class="col-sm-5 col-md-3 type" *ngFor="let type_n of types">{{ type_n }}
+            <mat-icon style="cursor: pointer;" (click)="removeType(type_n)" class="pull-right">close</mat-icon>
+          </p>
+        </span>
+      </div>
+      <br>
+      <div class="col-md-6" style="padding-left: 0px !important ">
+        <button mat-raised-button (click)="openInput()" style="width:255px; height:auto;">
+          Upload Project Layouts
+        </button>
+        <!-- <img src="/assets/upload.png" style="width:30%" (click)="openInput()" alt="UploadImage"> -->
+      </div>
+
+      <div class="col-md-6" style="min-width: 50%">
+        <img *ngIf="imageUrl !== ''" [src]=imageUrl alt="UploadImage" style="width:80%; height:auto;">
+        <!-- <img id="originalImage" [src]=originalImageUrl alt=" Original User Image"  style="display: none"> -->
+      </div>
+
+
+      <input id="fileInput" style="display: none" type="file" #img (change)="fileChange($event.target.files)" name="img"
+        accept="image/*">
+    </form>
+    <br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button *ngIf="!showWait" mat-raised-button (click)="upload()" color="primary">Submit</button>
+    <button *ngIf="showWait" mat-raised-button color="accent" class="submit-button">Please wait... </button>
+    <button *ngIf="!showWait" mat-raised-button (click)="onCloseCancel()" class="warn">Cancel</button>
+  </mat-dialog-actions>
+</div>

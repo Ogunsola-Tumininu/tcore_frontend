@@ -1,0 +1,138 @@
+<mat-tab-group>
+  <mat-tab label="Follow Up">
+    <div class="site-body col-md-12 ">
+      <h3>Newly Scheduled Appointments</h3>
+      <p *ngIf="appLen === 0">You have no appointment schedule to confirm</p>
+      <!-- <div *ngFor="let appointment of appointments" class="panel panel-warning">
+        <div class="panel-heading">
+          <p><b>Follow Up By: </b>{{ appointment.followUp.name}}</p>
+          <span (click)="editAppointment(appointment)" class="glyphicon glyphicon-edit pull-right"
+            style="margin-top: -25px; cursor: pointer; "></span>
+          <p class="pull-right" style="margin-top: -25px; margin-right: 60px"><b>Scheduled Date:
+            </b>{{ appointment.viewDate | date: 'medium'}}</p>
+
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-4">
+            <p> <b>Site: </b></p>
+            <p> {{ appointment.site.name }}</p>
+          </div>
+          <div class="col-sm-4">
+            <p> <b>Property: </b></p>
+            <p> {{ appointment.property }}</p>
+          </div>
+          <div class="col-sm-4">
+            <p> <b>Project: </b></p>
+            <p> {{ appointment.project }}</p>
+          </div>
+          <div class="col-sm-4">
+            <p> <b>Availability: </b></p>
+            <p> Unconfirmed</p>
+          </div>
+          <div class="col-sm-12">
+            <p> <b>Inputter Remarks: </b></p>
+            <p> {{ appointment.remark }}</p>
+          </div>
+          <div class="col-sm-12">
+            <button (click)="allocatePresenter(appointment._id)" class="btn btn-primary pull-right">Allocate
+              Presenter</button>
+          </div>
+        </div>
+      </div> -->
+      <mat-card *ngIf="appLen > 0">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+
+          <div *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+          </div>
+
+          <table mat-table [dataSource]="dataSource" matSort *ngIf="!isLoading">
+            <ng-container matColumnDef="customer">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let appointment">
+                <a routerLink="/user/customer/{{appointment.customer.id}}">{{appointment.customer.name}} </a>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="site">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header > Site </th>
+              <td mat-cell *matCellDef="let appointment"> {{appointment.site.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="property">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header > Property </th>
+              <td mat-cell *matCellDef="let appointment" > {{appointment.property}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > Scheduled Date </th>
+                <td mat-cell *matCellDef="let appointment"> {{appointment.viewDate | date: 'medium'}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header > Action </th>
+                  <td mat-cell *matCellDef="let appointment"> <button (click)="allocatePresenter(appointment._id)" class="btn btn-primary"> Assign Presenter</button> </td>
+                </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </table>
+          <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons>
+          </mat-paginator>
+        </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Confirmed Appointments">
+    <div class="site-body col-md-12 ">
+      <h3>Confirmed Appointments</h3>
+      <p *ngIf="conLen === 0">You have no confirmed schedule Appointment</p>
+      <app-confirmed-appontment></app-confirmed-appontment>
+      <!-- <div *ngFor="let conf of confirmed" class="panel panel-warning">
+        <div class="panel-heading">
+          <p><b>Follow Up By: </b>{{ conf.followUp.name}}</p>
+          <p class="pull-right" style="margin-top: -25px; margin-right: 60px"><b>Scheduled Date:
+            </b>{{ conf.viewDate | date: 'medium'}}</p>
+
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-4">
+            <p> <b>Site: </b></p>
+            <p> {{ conf.site.name }}</p>
+          </div>
+          <div class="col-sm-4">
+            <p> <b>Property: </b></p>
+            <p> {{ conf.property }}</p>
+          </div>
+          <div class="col-sm-4">
+            <p> <b>Project: </b></p>
+            <p> {{ conf.project }}</p>
+          </div>
+          <div class="col-sm-4">
+            <p> <b>Availability: </b></p>
+            <p> Confirmed</p>
+          </div>
+
+          <div class="col-sm-4">
+            <p> <b>Presenter: </b></p>
+            <p> {{ conf.presenter.name }}</p>
+          </div>
+          <div class="col-sm-12">
+            <p> <b>Inputter Remarks: </b></p>
+            <p> {{ conf.remark }}</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </mat-tab>
+  <mat-tab label="Processed Appointment">
+      <div class="site-body col-md-12 ">
+        <h3>Proccessed Appointments</h3>
+        <app-processed-appointment></app-processed-appointment>
+      </div>
+  </mat-tab>
+</mat-tab-group>

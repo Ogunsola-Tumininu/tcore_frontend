@@ -1,0 +1,36 @@
+@import "./../../../../../assets/materialize/css/materialize.min.css";
+.site-header{
+  background-color: white;
+  padding: 10px 30px 10px 30px;
+}
+
+.cen{
+  text-align: center
+}
+
+.site-body{
+  background-color: white;
+  padding-top: 30px
+}
+
+
+.mat-column-right{
+  text-align: center;
+}
+table, th, td{
+  width: 100%;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell{
+  border: none
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+/* img{
+  width: 100%;
+  margin:30px 0px 0px 0px;
+  padding-top: 20px
+} */

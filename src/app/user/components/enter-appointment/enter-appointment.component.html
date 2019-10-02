@@ -1,0 +1,52 @@
+<div>
+  <div mat-dialog-title>
+    <h3>Book Appointment
+      <mat-icon class="pull-right" (click)="onCloseCancel()">close</mat-icon>
+    </h3>
+  </div>
+  <hr>
+  <mat-dialog-content>
+    <form>
+      <mat-form-field style="width: 33%">
+        <mat-select placeholder="Site" name="site" [(ngModel)]="site" (ngModelChange)="onSiteChange($event)">
+          <mat-option *ngFor="let site of sites" [value]="site">{{site.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 33%">
+        <mat-select placeholder="Project Name" name="project_name" [(ngModel)]="projectName">
+          <mat-option *ngFor="let project of projects" [value]="project.name">{{project.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 33%">
+        <mat-select placeholder="Property" name="property_name" [(ngModel)]="propertyType">
+          <mat-option *ngFor="let property of properties" [value]="property.name">{{ property.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 50%">
+        <input matInput type="datetime-local" placeholder="Appointment Date" name="viewDate" [(ngModel)]="viewDate" required>
+
+      </mat-form-field>
+
+      <mat-form-field style="width: 50%">
+        <mat-select placeholder="Follow Up" name="followUp" [(ngModel)]="followUp">
+          <mat-option *ngFor="let followUp of users" [value]="followUp">{{ followUp.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%">
+        <textarea matInput placeholder="Remarks" [(ngModel)]="remarks" name="remarks"
+          rows="4"></textarea>
+      </mat-form-field>
+    </form>
+    <br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button *ngIf="!showWait" mat-raised-button (click)="createAppointment()" color="primary">Submit</button>
+    <button *ngIf="showWait" mat-raised-button color="accent" class="submit-button">Please wait... </button>
+    <button *ngIf="!showWait" mat-raised-button (click)="onCloseCancel()" class="warn">Cancel</button>
+  </mat-dialog-actions>
+</div>

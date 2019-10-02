@@ -1,0 +1,31 @@
+<div>
+  <div mat-dialog-title>
+    <h3>Update User
+      <mat-icon class="pull-right"  (click)="onCloseCancel()">close</mat-icon>
+    </h3>
+  </div>
+  <hr>
+  <mat-dialog-content>
+    <form style="width:100%;">
+      <br>
+      <mat-form-field >
+        <mat-select placeholder="Role" name="role" name="role" [value]="userRole" [(ngModel)]="userRole" required>
+          <mat-option value="inputter">Inputter</mat-option>
+          <mat-option value="scheduler"> Scheduler</mat-option>
+          <mat-option value="follow_up"> Follow Up</mat-option>
+        </mat-select>
+        <mat-error>Role is required</mat-error>
+      </mat-form-field>
+      <br>
+
+    </form>
+    <br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="accent" class="submit-button" (click)="updateRole()">
+      Submit
+    </button>
+    <button mat-raised-button (click)="onCloseCancel()">Cancel</button>
+  </mat-dialog-actions>
+</div>

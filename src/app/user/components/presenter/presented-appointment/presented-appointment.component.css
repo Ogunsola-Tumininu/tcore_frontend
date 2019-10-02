@@ -1,0 +1,14 @@
+.mat-column-right{
+  text-align: center;
+}
+table, th, td{
+  width: 100%;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell{
+  border: none
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}

@@ -1,0 +1,44 @@
+<div class="container-fluid loginImage">
+    <div class="col-md-4 admin col-md-offset-4">
+        <div class="title">
+          <h2> Admin Login</h2>
+        </div>
+        <form name="loginForm" [formGroup]="loginForm" novalidate>
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" [(ngModel)]="email" name="email" required>
+            <mat-error *ngIf="loginForm.get('email').hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="!loginForm.get('email').hasError('required') &&
+                                      loginForm.get('email').hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" formControlName="password" [(ngModel)]="password"
+              name="password" required>
+            <mat-error>
+              Password is required
+            </mat-error>
+          </mat-form-field>
+          <div class="remember-forgot-password">
+            <a class="forgot-password" [routerLink]="'/forgot-password'">
+              Forgot Password?
+            </a>
+            <br><br>
+          </div>
+
+          <button expand="block" mat-raised-button color="accent" class="submit-button" (click)="onLoginSubmit()"
+            aria-label="LOGIN">
+            LOGIN
+          </button>
+        </form>
+
+        <div class="register" fxLayout="column" fxLayoutAlign="center center">
+          <span class="text">Don't have an account?</span><br>
+          <a class="link" routerLink="/register">Create an account</a>
+        </div>
+      </div>
+</div>
+

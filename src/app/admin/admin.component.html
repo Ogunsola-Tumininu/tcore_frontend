@@ -1,0 +1,26 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="col-md-3 admin">
+    <ul class="list-group">
+      <li class="list-group-item mark">
+        <a>Create</a>
+      </li>
+      <li class="list-group-item"><a routerLink="/register" >User</a></li>
+      <li class="list-group-item"><a (click)="addSite()">Site</a></li>
+      <li class="list-group-item"><a (click)="addProperty()">Property</a></li>
+      <li class="list-group-item"><a >Customer</a></li>
+    </ul>
+  </div>
+<!-- <div class="container">
+    <router-outlet></router-outlet>
+</div> -->
+
+<div class="col-md-9">
+    <router-outlet></router-outlet>
+</div>
+
+
+
+
+
+
+

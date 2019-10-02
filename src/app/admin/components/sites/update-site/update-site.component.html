@@ -1,0 +1,36 @@
+<div>
+  <div mat-dialog-title>
+    <h3>Update Site
+      <mat-icon class="pull-right"  (click)="onCloseCancel()">close</mat-icon>
+    </h3>
+  </div>
+  <hr>
+  <mat-dialog-content>
+    <form style="width:100%;">
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="name" [value]="name" name="name" required>
+        <mat-error>
+          Site name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Location" [(ngModel)]="location" [value]="location" name="location" required>
+        <mat-error>
+          Site location is required
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+    </form>
+    <br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="accent" class="submit-button" (click)="updateSite()">
+      Submit
+    </button>
+    <button mat-raised-button (click)="onCloseCancel()">Cancel</button>
+  </mat-dialog-actions>
+</div>

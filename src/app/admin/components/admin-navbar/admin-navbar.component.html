@@ -1,0 +1,33 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/admin" routerLinkActive="Active">Tcore</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar">
+        <!-- <li><a routerLink="/user" routerLinkActive="Active">Home</a></li> -->
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin" routerLinkActive="Active">Dashboard</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/users" routerLinkActive="Active">User</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/customers" routerLinkActive="Active">Customers</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/sites" routerLinkActive="Active">Sites</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/properties" routerLinkActive="Active">Properties</a></li>
+        <!-- <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/user/dashboard" routerLinkActive="Active">Dashboard</a></li> -->
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li *ngIf="!auth.loggedIn()"><a routerLink="/user/register" routerLinkActive="Active"><span
+              class="glyphicon glyphicon-user"></span> Register</a></li> -->
+        <li *ngIf="!auth.loggedIn()"><a routerLink="/admin/login" routerLinkActive="Active"><span
+              class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="auth.loggedIn()"><a href='#' (click)="onLogoutClick()"><span
+              class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

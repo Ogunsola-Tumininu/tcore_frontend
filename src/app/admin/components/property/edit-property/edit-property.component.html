@@ -1,0 +1,75 @@
+<div>
+  <div mat-dialog-title>
+    <h3>Update property
+      <mat-icon class="pull-right" (click)="onCloseCancel()">close</mat-icon>
+    </h3>
+  </div>
+  <hr>
+  <mat-dialog-content>
+    <form>
+      <mat-form-field style="width: 50%">
+        <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
+        <mat-error>
+          Property name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 50%">
+        <input matInput placeholder="House Type" [(ngModel)]="house_type" name="house_type" required>
+        <mat-error>
+          House type name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 33%">
+          <input matInput placeholder="Site" [disabled]="true" [value]="site.siteName" name="site" required>
+          <mat-error>
+            Site name is required
+          </mat-error>
+        </mat-form-field>
+
+      <!-- <mat-form-field style="width: 33%">
+        <mat-select placeholder="Site" name="site"  [(ngModel)]="site" (ngModelChange)="onSiteChange($event)">
+          <mat-option *ngIf="site" selected="selected" value="{{site}}">{{site.siteName}}</mat-option>
+          <mat-option *ngFor="let site of sites" [value]="site">{{site.name}}</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+      <mat-form-field style="width: 33%">
+        <mat-select placeholder="Project Name" name="pro_name" [(ngModel)]="project_name"
+          (ngModelChange)="onProjectChange($event)">
+          <!-- <mat-option *ngIf="project_name" selected="selected" value="{{project_name}}">{{project_name}}</mat-option> -->
+          <mat-option *ngFor="let project of projects" [value]="project.name">{{project.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 33%">
+        <mat-select placeholder="Project Type" name="project_type" [(ngModel)]="project_type">
+          <mat-option *ngIf="project_type" selected="selected" value="{{project_type}}">{{project_type}}</mat-option>
+          <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 50%">
+        <input type="number" matInput placeholder="Unit" [(ngModel)]="unit" name="unit" required>
+        <mat-error>
+          Unit is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 50%">
+        <input type="number" matInput placeholder="Cost" [(ngModel)]="cost" name="cost" required>
+        <mat-error>
+          Cost is required
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button *ngIf="!showWait" mat-raised-button (click)="createProperty()" color="primary">Submit</button>
+    <button *ngIf="showWait" mat-raised-button color="accent" class="submit-button">Please wait... </button>
+    <button *ngIf="!showWait" mat-raised-button (click)="onCloseCancel()" class="warn">Cancel</button>
+  </mat-dialog-actions>
+</div>

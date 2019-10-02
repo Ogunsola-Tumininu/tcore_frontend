@@ -1,0 +1,98 @@
+<div class="detail">
+  <h2>Property Details </h2>
+</div>
+
+<div class="col-md-12 property">
+  <div class="col-md-6">
+    <h4> <b>Property Name: </b></h4>
+    <p> {{ property.name }}</p>
+  </div>
+
+  <div class="col-md-6">
+    <h4> <b>House Type: </b></h4>
+    <p> {{ property.name }}</p>
+  </div>
+
+  <div class="col-md-6">
+    <h4> <b>Site: </b></h4>
+    <p> {{ site.siteName }}</p>
+  </div>
+
+  <div class="col-md-6">
+    <h4> <b>Project Name: </b></h4>
+    <p> {{ property.project_name }}</p>
+  </div>
+
+  <div class="col-md-6">
+    <h4> <b>Project Type: </b></h4>
+    <p> {{ property.project_type }}</p>
+  </div>
+  <div class="col-md-6">
+    <h4> <b>Units: </b></h4>
+    <p> {{ property.unit }}</p>
+  </div>
+  <div class="col-md-6">
+    <h4> <b>Cost: </b></h4>
+    <p> &#8358;{{ property.cost }}</p>
+  </div>
+</div><br>
+
+
+<div class="site-body col-md-12">
+  <div class="col-md-6">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <p>Floor Layouts</p>
+        <button class=" btn btn-primary pull-right" (click)="openUploadFloorDialog()" style="margin-top: -33px"> Upload
+          Floor
+          Layout</button>
+      </div>
+      <div class="panel-body">
+        <div *ngIf="fLen > 0">
+          <img *ngFor="let floor of property.floor_uploads" src="{{floor.url}}" alt="layout image">
+          <!-- <div class="carousel carousel-slider">
+              <a *ngFor="let floor of property.floor_uploads" class="carousel-item"><img src="{{floor.url}}" alt="layout image"></a>
+            </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- <img *ngFor="let layout of site.uploads" mat-card-image src="{{layout.url}}" alt="Photo of a Shiba Inu"> -->
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <p>Site Layouts</p>
+        <button class=" btn btn-primary pull-right" (click)="openUploadLayoutDialog()" style="margin-top: -33px"> Upload
+          Site
+          Layout</button>
+      </div>
+      <div class="panel-body">
+        <div *ngIf="sLen > 0">
+          <img *ngFor="let site of property.site_uploads" src="{{site.url}}" alt="layout image">
+          <!-- <div class="carousel carousel-slider">
+              <a *ngFor="let site of property.site_uploads" class="carousel-item"><img src="{{site.url}}" alt="layout image"></a>
+            </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>3D Rendering</p>
+        <button class=" btn btn-primary pull-right" (click)="openUpload3DDialog()" style="margin-top: -33px"> Upload 3D
+          Rendering</button>
+      </div>
+      <div class="panel-body">
+        <div *ngIf="dLen > 0">
+          <img *ngFor="let d of property.d_uploads" src="{{d.url}}" alt="layout image">
+          <!-- <div class="carousel carousel-slider">
+            <a *ngFor="let d of property.d_uploads" class="carousel-item"><img src="{{d.url}}" alt="layout image"></a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div>
+    <div mat-dialog-title>
+      <h3>Allocate Presenter
+        <mat-icon class="pull-right" (click)="onCloseCancel()">close</mat-icon>
+      </h3>
+    </div>
+    <hr>
+    <mat-dialog-content>
+      <form>
+          <mat-form-field style="width: 100%">
+              <mat-select placeholder="Follow Up" name="followUp" [(ngModel)]="presenter">
+                <mat-option *ngFor="let presenter of users" [value]="presenter">{{ presenter.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </form>
+      <br><br>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button *ngIf="!showWait" mat-raised-button (click)="confirmAppointment()" color="primary">Submit</button>
+      <button *ngIf="showWait" mat-raised-button color="accent" class="submit-button">Please wait... </button>
+      <button *ngIf="!showWait" mat-raised-button (click)="onCloseCancel()" class="warn">Cancel</button>
+    </mat-dialog-actions>
+  </div>

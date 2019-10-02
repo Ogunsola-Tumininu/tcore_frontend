@@ -1,0 +1,13 @@
+.mark{
+	background-color: #adc4d8;
+
+}
+
+.mark a{
+	color: white !important;
+}
+
+div.admin ul li a{
+  cursor: pointer;
+  text-decoration: none;
+}

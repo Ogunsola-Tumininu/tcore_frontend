@@ -1,0 +1,37 @@
+.mark{
+	background-color: #adc4d8;
+
+}
+
+.mark a{
+	color: white !important;
+}
+
+.back{
+  position: relative;
+  background: url('/assets/photo.jpg') no-repeat;
+ height: 200px;
+}
+
+img{
+  width: 60%;
+  position: absolute;
+  bottom: -100px;
+  left: 19%
+}
+
+.info{
+  padding: 20px;
+  padding-top: 100px;
+  background-color: whitesmoke;
+  text-align: center;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .admin{
+    display: none;
+  }
+}
+

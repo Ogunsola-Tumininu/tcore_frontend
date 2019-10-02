@@ -1,0 +1,23 @@
+<div class="site-header">
+  <h2> <b>Project Name: </b>{{ project.name }}</h2>
+  <p style="color: grey"><b>Type: </b>{{project.type}}</p>
+  <button class=" btn btn-primary pull-right" (click)="openMoreLayoutDialog()" style="margin-top: -60px"> Add
+    More Layout</button>
+</div><br>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <p>Layouts</p>
+  </div>
+  <div class="panel-body">
+    <img *ngFor="let layout of uploads" class="img img-responsive" src="{{layout.url}}" alt="project layout">
+
+  </div>
+</div>
+
+
+<!-- <div class="site-body col-md-12">
+  <mat-card class="example-card" style=" margin-bottom: 20px">
+    <img *ngFor="let layout of project.uploads" mat-card-image src="{{layout.url}}" alt="Photo of a Shiba Inu">
+  </mat-card>
+</div> -->

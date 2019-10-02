@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "./assets/materialize/css/materialize.min.css"; */
+
+body{
+  background: url('/assets/bg.jpg');
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .mobile-hidden{
+    display: none;
+  }
+}

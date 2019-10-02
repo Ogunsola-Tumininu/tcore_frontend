@@ -1,0 +1,43 @@
+<div>
+  <div mat-dialog-title>
+    <h3>Update Project
+      <mat-icon class="pull-right" (click)="onCloseCancel()">close</mat-icon>
+    </h3>
+  </div>
+  <hr>
+  <mat-dialog-content>
+    <form style="width:100%;">
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="name" [value]="name" name="name" required>
+        <mat-error>
+          Project name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field style="width: 85%">
+        <input matInput placeholder="Type" [(ngModel)]="type" name="type">
+      </mat-form-field>
+
+      <mat-icon (click)="addType()">add</mat-icon>
+
+      <div class="col-md-12">
+        <span>
+          <p class="col-sm-5 col-md-3 type" *ngFor="let type_n of types">{{ type_n }}
+            <mat-icon style="cursor: pointer;" (click)="removeType(type_n)" class="pull-right">close</mat-icon>
+          </p>
+        </span>
+      </div>
+      <br>
+
+    </form>
+    <br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="accent" class="submit-button" (click)="updateProject()">
+      Submit
+    </button>
+    <button mat-raised-button (click)="onCloseCancel()">Cancel</button>
+  </mat-dialog-actions>
+</div>

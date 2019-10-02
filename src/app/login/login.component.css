@@ -1,0 +1,60 @@
+div.loginImage{
+  background: url('/assets/photo.jpg') no-repeat;
+  height: 100vh;
+}
+
+.login{
+  margin-top: 5%;
+  padding: 40px
+}
+.logo {
+  width: 200px;
+  margin: 32px auto;
+}
+
+.remember-forgot-password {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 8px;
+
+}
+
+.remember-me {
+  margin-bottom: 16px
+}
+
+.forgot-password {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px
+}
+
+.register {
+  text-align: center;
+  margin: 32px auto 24px auto;
+  width: 250px;
+  font-weight: 500;
+
+
+
+}
+
+.text {
+  margin-right: 8px;
+}
+
+.title{
+  text-align: center;
+  margin-bottom: 50px
+}
+
+.submit-button {
+  width: 100%;
+  margin: 16px auto;
+  display: block;
+}
+
+mat-form-field{
+  width: 100%;
+  font-size: 1.2em
+}

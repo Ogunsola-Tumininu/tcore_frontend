@@ -1,0 +1,32 @@
+<div>
+  <div mat-dialog-title>
+    <h3>Presentation Report
+      <mat-icon class="pull-right" (click)="onCloseCancel()">close</mat-icon>
+    </h3>
+  </div>
+  <hr>
+  <mat-dialog-content>
+    <form>
+      <mat-form-field style="width: 50%">
+        <mat-select placeholder="Customer Type" name="customerType" [(ngModel)]="customerType">
+          <mat-option  value="Serious">Serious</mat-option>
+          <mat-option  value="Unserious">Unserious</mat-option>
+          <mat-option  value="Prospective">Prospective</mat-option>
+          <mat-option  value="Future Lead">Future Lead</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%">
+        <textarea matInput placeholder="Remarks" [(ngModel)]="remark" name="remark" rows="4"></textarea>
+      </mat-form-field>
+
+    </form>
+    <br><br>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button *ngIf="!showWait" mat-raised-button (click)="sendReport()" color="primary">Submit</button>
+    <button *ngIf="showWait" mat-raised-button color="accent" class="submit-button">Please wait... </button>
+    <button *ngIf="!showWait" mat-raised-button (click)="onCloseCancel()" class="warn">Cancel</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,26 @@
+@import "./../../../../../assets/materialize/css/materialize.min.css";
+
+div.property{
+  background-color: white !important;
+  padding: 10px 30px 10px 30px;
+  margin-bottom: 20px
+}
+
+div.detail{
+  background-color: white !important;
+  padding: 10px 30px 10px 30px;
+  margin-bottom: 20px
+}
+
+div.property p{
+  color: grey
+}
+
+.site-body{
+  background-color: white !important;
+  padding-top: 30px
+}
+
+img{
+  width: 100%
+}

@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="col-md-3  admin">
+
+  <div class="back">
+    <ul *ngIf="role == 'inputter'"  class="list-group">
+      <li class="list-group-item mark">
+          <a (click)="createCustomer()">Create Customer</a>
+      </li>
+    </ul>
+    <img class="img img-responsive" src="assets/avatar.png" alt="">
+  </div>
+
+  <div class="info">
+    <h2>{{user.name}}</h2>
+    <p>Role</p>
+    <p style="color: grey">{{user.role}}</p>
+  </div>
+</div>
+<!-- <div class="container">
+    <router-outlet></router-outlet>
+</div> -->
+
+<div class="col-md-9">
+  <router-outlet></router-outlet>
+</div>
