@@ -1,7 +1,7 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse stat" >
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle" id="tog" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -11,11 +11,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar">
         <!-- <li><a routerLink="/user" routerLinkActive="Active">Home</a></li> -->
-        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin" routerLinkActive="Active">Dashboard</a></li>
-        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/users" routerLinkActive="Active">User</a></li>
-        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/customers" routerLinkActive="Active">Customers</a></li>
-        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/sites" routerLinkActive="Active">Sites</a></li>
-        <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/admin/properties" routerLinkActive="Active">Properties</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()" (click)="onNavClick()"><a routerLink="/admin" routerLinkActive="Active">Dashboard</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()" (click)="onNavClick()"><a routerLink="/admin/users" routerLinkActive="Active">User</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()" (click)="onNavClick()"><a routerLink="/admin/customers" routerLinkActive="Active">Customers</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()" (click)="onNavClick()"><a routerLink="/admin/sites" routerLinkActive="Active">Sites</a></li>
+        <li *ngIf="auth.isAdmin() || auth.loggedIn()" (click)="onNavClick()"><a routerLink="/admin/properties" routerLinkActive="Active">Properties</a></li>
         <!-- <li *ngIf="auth.isAdmin() || auth.loggedIn()"><a routerLink="/user/dashboard" routerLinkActive="Active">Dashboard</a></li> -->
 
 

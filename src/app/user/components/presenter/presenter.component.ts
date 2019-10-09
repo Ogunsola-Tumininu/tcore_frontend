@@ -77,7 +77,7 @@ export class PresenterComponent implements OnInit {
 
   openReportDialog(id){
     let dialogRef = this.dialog.open(PresenterReportComponent, {
-      width: '60%',
+      width: '90%',
       data: {
         appointId: id
         }

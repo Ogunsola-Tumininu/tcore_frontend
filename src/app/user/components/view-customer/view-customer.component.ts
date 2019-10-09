@@ -22,13 +22,17 @@ export class ViewCustomerComponent implements OnInit {
   appointLen: Number = 0;
   role: any  ;
 
+  mobWidth: any
+
   constructor(
     private userService: UserService,
     private auth: AuthService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
     private dialog: MatDialog,
-  ) { }
+  ) {
+    this.mobWidth = (window.screen.width);
+  }
 
   ngOnInit() {
     // Combine them both into a single observable
@@ -65,6 +69,7 @@ export class ViewCustomerComponent implements OnInit {
       .subscribe((data:any) => {
         if(data.success){
           this.appointments = data.appointments;
+          this.appointLen = this.appointments.length;
           // console.log(this.appointments)
         }
       })
@@ -72,7 +77,7 @@ export class ViewCustomerComponent implements OnInit {
 
   openAddAppointmentDialog(){
     let dialogRef = this.dialog.open(EnterAppointmentComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
       data: {
         customer : this.customer,
         }
@@ -88,7 +93,7 @@ export class ViewCustomerComponent implements OnInit {
 
   editAppointment(appoint){
     let dialogRef = this.dialog.open(EditAppointmentComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
       data: {
         customer : this.customer,
         appoint: appoint

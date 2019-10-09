@@ -58,6 +58,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { LoginGuard } from './guards/login.guard';
 import { AdminLoginGuard } from './guards/admin-login.guard';
 import { HttpAuthInterceptor } from './guards/http-route.interceptor';
+import { AdminAuthGuard } from './guards/admin-auth.guard.';
 
 
 
@@ -70,7 +71,7 @@ export function tokenGetter() {
 
 const appRoutes: Routes = [
   {path:'', redirectTo: '/login', pathMatch: 'full'},
-  {path:'register', component: RegisterComponent},
+  {path:'register', component: RegisterComponent,  canActivate:[AdminAuthGuard]},
   {path:'login', component: LoginComponent, canActivate:[LoginGuard]},
   {path:'admin/login', component: AdminLoginComponent, canActivate:[AdminLoginGuard]},
 

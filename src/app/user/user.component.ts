@@ -36,7 +36,7 @@ export class UserComponent {
 
   createCustomer(){
     let dialogRef = this.dialog.open(CreateCustomerComponent, {
-      width: '60%',
+      width: '90%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

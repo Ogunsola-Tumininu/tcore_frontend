@@ -19,14 +19,19 @@ export class SitesComponent implements OnInit {
   displayedColumns=['name','location', 'actions'];
   dataSource: any;
 
+  mobWidth: any;
+
   @ViewChild(MatPaginator) paginator : MatPaginator;
   @ViewChild(MatSort) sort : MatSort;
+
   constructor(
     private adminService: AdminService,
     private toastr: ToastrService,
     private dialog: MatDialog,
     private router: Router
-  ) { }
+  ) {
+    this.mobWidth = (window.screen.width);
+   }
 
   ngOnInit() {
     this.fetchSites()
@@ -47,7 +52,7 @@ export class SitesComponent implements OnInit {
 
   openDialog(id){
     let dialogRef = this.dialog.open(DelSiteComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '40%',
       data: {id : id,
         }
     });
@@ -62,7 +67,7 @@ export class SitesComponent implements OnInit {
 
   openUpdateSiteDialog(site:any){
     let dialogRef = this.dialog.open(UpdateSiteComponent, {
-      width: '60%',
+      width: (this.mobWidth < 768) ?  '95%' : '60%',
       data: {site : site,
         }
     });

@@ -35,12 +35,8 @@ export class ValidateService {
     return re.test(String(phone));
   }
 
-  validatePassword(user) {
-    if(user.password !== user.rptpassword ){
-      return false;
-    }
-    else{
-      return true;
-    }
+  validatePassword(password) {
+    var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,50}$/;
+    return re.test(String(password));
   }
 }

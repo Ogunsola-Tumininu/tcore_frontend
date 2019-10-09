@@ -7,21 +7,21 @@
   <hr>
   <mat-dialog-content>
     <form>
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
         <mat-error>
           Property name is required
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input matInput placeholder="House Type" [(ngModel)]="house_type" name="house_type" required>
         <mat-error>
           House type name is required
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field style="width: 33%">
+      <mat-form-field class="col-md-4">
           <input matInput placeholder="Site" [disabled]="true" [value]="site.siteName" name="site" required>
           <mat-error>
             Site name is required
@@ -35,7 +35,7 @@
         </mat-select>
       </mat-form-field> -->
 
-      <mat-form-field style="width: 33%">
+      <mat-form-field class="col-md-4">
         <mat-select placeholder="Project Name" name="pro_name" [(ngModel)]="project_name"
           (ngModelChange)="onProjectChange($event)">
           <!-- <mat-option *ngIf="project_name" selected="selected" value="{{project_name}}">{{project_name}}</mat-option> -->
@@ -43,22 +43,23 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field style="width: 33%">
+      <mat-form-field class="col-md-4">
         <mat-select placeholder="Project Type" name="project_type" [(ngModel)]="project_type">
-          <mat-option *ngIf="project_type" selected="selected" value="{{project_type}}">{{project_type}}</mat-option>
-          <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+          <!-- <mat-option *ngIf="project_type" selected="selected" value="{{project_type}}">{{project_type}}</mat-option> -->
+          <mat-option *ngFor="let type of types.type" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input type="number" matInput placeholder="Unit" [(ngModel)]="unit" name="unit" required>
         <mat-error>
           Unit is required
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input type="number" matInput placeholder="Cost" [(ngModel)]="cost" name="cost" required>
+        <span matPrefix>&#8358;</span>
         <mat-error>
           Cost is required
         </mat-error>

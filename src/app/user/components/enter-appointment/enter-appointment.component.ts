@@ -16,7 +16,7 @@ export class EnterAppointmentComponent implements OnInit {
   site: any = {};
   projectName: string = '';
   propertyType: string = '';
-  viewDate: Date = new Date();
+  viewDate: Date ;
   followUp: any
   remarks: string = '';
 

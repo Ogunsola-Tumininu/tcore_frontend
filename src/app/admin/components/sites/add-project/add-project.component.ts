@@ -82,6 +82,9 @@ export class AddProjectComponent implements OnInit {
   }
 
   addType() {
+    if(this.type == ''){
+      return
+    }
     let check = this.types.find(type => type == this.type);
     if (!check) {
       this.types.push(this.type);

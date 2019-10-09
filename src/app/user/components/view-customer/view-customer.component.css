@@ -1,11 +1,9 @@
 div.property{
-  background-color: white !important;
-  padding: 10px 30px 10px 30px;
-  margin-bottom: 20px
+  padding: 30px;
+  margin-bottom: 20px !important
 }
 
 div.detail{
-  background-color: white !important;
   padding: 10px 30px 10px 30px;
   margin-bottom: 20px
 }
@@ -16,11 +14,54 @@ div.property p{
 
 .site-body{
   background-color: white !important;
-  margin-top: 20px;
-  padding: 0px 40px 0px 40px
+  padding: 20px 40px 20px 40px;
+  margin-top: 20px !important
 }
 
 .site-body h3{
   margin-bottom: 20px
 }
+
+.prop{
+  margin-bottom: 20px;
+}
+
+.format{
+  margin-top: -10px;
+}
+
+.panel-body{
+  margin-top: 15px
+}
+
+@media only screen and (min-width: 768px) {
+
+  .show{
+    display: none !important;
+  }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .site-body, .no-padding{
+    padding: 0px;
+  }
+
+  .site-body{
+    margin-top: -20px;
+    padding-top:15px
+  }
+  .site-body h3{
+    padding-left: 15px
+  }
+
+  .show{
+    display: block !important;
+  }
+
+}
+
+
 

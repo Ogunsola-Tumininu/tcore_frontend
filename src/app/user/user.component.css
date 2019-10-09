@@ -27,11 +27,22 @@ img{
   text-align: center;
   height: 100vh;
 }
+div.content{
+  margin-top: 70px !important;
+}
+
+div.admin{
+  position: fixed;
+}
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .admin{
     display: none;
+  }
+
+  .show{
+    display: block !important;
   }
 }
 

@@ -1,42 +1,53 @@
 <mat-card *ngIf="conLen > 0">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
-    <br>
-    <mat-divider></mat-divider>
-    <br>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <br>
+  <mat-divider></mat-divider>
+  <br>
 
-    <div *ngIf="isLoading">
-      <mat-spinner></mat-spinner>
-    </div>
+  <div *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
 
-    <table mat-table [dataSource]="dataSource" matSort *ngIf="!isLoading">
-      <ng-container matColumnDef="customer">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let appointment">
-          <a routerLink="/user/customer/{{appointment.customer.id}}">{{appointment.customer.name}} </a>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="customer" class="mobile-enlarge">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-enlarge"> Name </th>
+        <td mat-cell *matCellDef="let appointment" class="mobile-enlarge">
+          <a class="mobile-hidden" routerLink="/user/customer/{{appointment.customer.id}}">{{appointment.customer.name}}
+          </a>
+          <div class="col-xs-12 desk-hidden">
+            <p><b>Name: </b><a routerLink="/user/customer/{{appointment.customer.id}}">{{appointment.customer.name}}
+              </a></p>
+            <h4><b>Site: </b>{{appointment.site.name}}</h4>
+            <p style="color:dimgrey"> <b> Property: </b>{{appointment.property}}</p>
+            <p style="margin-bottom: 10px"><b>Status: </b> Waiting</p>
+          </div>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="site">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header > Site </th>
-        <td mat-cell *matCellDef="let appointment"> {{appointment.site.name}} </td>
+      <ng-container matColumnDef="site" class="mobile-hidden">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-hidden"> Site </th>
+        <td mat-cell *matCellDef="let appointment" class="mobile-hidden"> {{appointment.site.name}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="property">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header > Property </th>
-        <td mat-cell *matCellDef="let appointment" > {{appointment.property}} </td>
+      <ng-container matColumnDef="property" class="mobile-hidden">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-hidden"> Property </th>
+        <td mat-cell *matCellDef="let appointment" class="mobile-hidden"> {{appointment.property}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header > Scheduled Date </th>
-          <td mat-cell *matCellDef="let appointment"> {{appointment.viewDate | date: 'medium'}} </td>
-        </ng-container>
+      <ng-container matColumnDef="date" class="mobile-hidden">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-hidden"> Scheduled Date </th>
+        <td mat-cell *matCellDef="let appointment" class="mobile-hidden"> {{appointment.viewDate | date: 'medium'}}
+        </td>
+      </ng-container>
 
-        <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header > Action </th>
-            <td mat-cell *matCellDef="let appointment"> <button class="btn btn-primary"> Waiting </button> </td>
-          </ng-container>
+      <ng-container matColumnDef="status" class="mobile-hidden">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-hidden"> Action </th>
+        <td mat-cell *matCellDef="let appointment" class="mobile-hidden"> <button class="btn btn-primary"> Waiting
+          </button> </td>
+      </ng-container>
 
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -44,4 +55,5 @@
     </table>
     <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons>
     </mat-paginator>
-  </mat-card>
+  </div>
+</mat-card>

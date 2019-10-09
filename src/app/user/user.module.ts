@@ -57,6 +57,7 @@ import { PresenterReportComponent } from './components/presenter-report/presente
 import { ConfirmedAppontmentComponent } from './components/follow-up/confirmed-appontment/confirmed-appontment.component';
 import { ProcessedAppointmentComponent } from './components/follow-up/processed-appointment/processed-appointment.component';
 import { PresentedAppointmentComponent } from './components/presenter/presented-appointment/presented-appointment.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 
@@ -78,6 +79,7 @@ import { PresentedAppointmentComponent } from './components/presenter/presented-
     ConfirmedAppontmentComponent,
     ProcessedAppointmentComponent,
     PresentedAppointmentComponent,
+    ChangePasswordComponent,
 
   ],
   imports: [

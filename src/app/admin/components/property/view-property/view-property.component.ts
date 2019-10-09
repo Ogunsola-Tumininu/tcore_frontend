@@ -9,8 +9,8 @@ import 'rxjs/add/observable/combineLatest';
 import { UploadFloorComponent } from '../upload-floor/upload-floor.component';
 import { Upload3DComponent } from '../upload3-d/upload3-d.component';
 import { UploadLayoutComponent } from '../upload-layout/upload-layout.component';
+import { ShowUploadComponent } from '../../show-upload/show-upload.component';
 
-import * as M from './../../../../../assets/materialize/js/materialize.min.js';
 
 @Component({
   selector: 'app-view-property',
@@ -26,14 +26,18 @@ export class ViewPropertyComponent implements OnInit {
   fLen: number = 0;
   sLen: number = 0;
 
-  options = {fullWidth: true};
+  floorLayouts: any[] =[];
+
+  mobWidth: any
 
   constructor(
     private adminService: AdminService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
     private dialog: MatDialog,
-  ) { }
+  ) {
+    this.mobWidth = (window.screen.width);
+   }
 
   ngOnInit() {
     // Combine them both into a single observable
@@ -50,9 +54,6 @@ export class ViewPropertyComponent implements OnInit {
 
     });
 
-    // crousel variable
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, this.options);
   }
 
   fetchProperty(id){
@@ -61,6 +62,9 @@ export class ViewPropertyComponent implements OnInit {
         if(data.success){
           this.property = data.property;
           this.site = this.property.site;
+          var allFloorLayouts = data.property.floor_uploads;
+          this.floorLayouts =  allFloorLayouts.splice(0,1);
+
           this.dLen = this.property.d_uploads.length;
           this.fLen = this.property.floor_uploads.length;
           this.sLen = this.property.site_uploads.length;
@@ -69,9 +73,22 @@ export class ViewPropertyComponent implements OnInit {
       })
   }
 
+  showUpload(upload){
+    let dialogRef = this.dialog.open(ShowUploadComponent, {
+      width:(this.mobWidth < 768) ?  '95%' : '70%',
+      height: '100%',
+      data: {upload : upload,
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    })
+  }
+
   openUploadFloorDialog(){
     let dialogRef = this.dialog.open(UploadFloorComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
       data: {
         propertyId : this.property._id,
         }
@@ -87,7 +104,7 @@ export class ViewPropertyComponent implements OnInit {
 
   openUploadLayoutDialog(){
     let dialogRef = this.dialog.open(UploadLayoutComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
       data: {
         propertyId : this.property._id,
         }
@@ -103,7 +120,7 @@ export class ViewPropertyComponent implements OnInit {
 
   openUpload3DDialog(){
     let dialogRef = this.dialog.open(Upload3DComponent, {
-      width: '60%',
+      width: '90%',
       data: {
         propertyId : this.property._id,
         }

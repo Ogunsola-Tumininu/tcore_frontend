@@ -1,6 +1,6 @@
-<div class="site-header">
+<mat-card>
   <h2>Dashboard </h2>
-</div><br>
+</mat-card><br>
 
 <div class="col-md-12 p-0">
   <div class="col-md-4 p-0 align">
@@ -10,7 +10,7 @@
     </mat-card>
   </div>
 
-  <div class="col-md-4 align ">
+  <div class="col-md-4 align middle ">
     <mat-card class="align">
       <p>No of Successful Appointments</p>
       <h1>{{noOfSuccessful}}</h1>
@@ -36,46 +36,47 @@
           <div *ngIf="isLoading">
             <mat-spinner></mat-spinner>
           </div>
-
-          <table mat-table [dataSource]="dataSource" matSort *ngIf="!isLoading">
-            <ng-container matColumnDef="customer">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-              <td mat-cell *matCellDef="let appointment">
-                <a routerLink="/user/customer/{{appointment.customer.id}}">{{appointment.customer.name}} </a>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="site">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header > Site </th>
-              <td mat-cell *matCellDef="let appointment"> {{appointment.site.name}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="property">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header > Property </th>
-              <td mat-cell *matCellDef="let appointment" > {{appointment.property}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header > Scheduled Date </th>
-                <td mat-cell *matCellDef="let appointment"> {{appointment.viewDate | date: 'medium'}} </td>
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort *ngIf="!isLoading">
+              <ng-container matColumnDef="customer">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let appointment">
+                  <a routerLink="/admin/customer/{{appointment.customer.id}}">{{appointment.customer.name}} </a>
+                </td>
               </ng-container>
 
-              <ng-container matColumnDef="status">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header > Status </th>
-                  <td mat-cell *matCellDef="let appointment">
-                     <p *ngIf="!appointment.availability">Waiting</p>
-                     <p *ngIf="appointment.availability">Successful</p>
-                     <p *ngIf="appointment.offerIssued">Offered</p>
-                     <p></p>
-                  </td>
+              <ng-container matColumnDef="site">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-hidden" > Site </th>
+                <td mat-cell *matCellDef="let appointment" class="mobile-hidden"> {{appointment.site.name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="property">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > Property </th>
+                <td mat-cell *matCellDef="let appointment" > {{appointment.property}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="date" class="mobile-hidden">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-hidden" > Scheduled Date </th>
+                  <td mat-cell *matCellDef="let appointment" class="mobile-hidden"> {{appointment.viewDate | date: 'medium'}} </td>
                 </ng-container>
 
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header > Status </th>
+                    <td mat-cell *matCellDef="let appointment">
+                      <p *ngIf="!appointment.availability">Waiting</p>
+                      <p *ngIf="appointment.availability">Successful</p>
+                      <p *ngIf="appointment.offerIssued">Offered</p>
+                      <p></p>
+                    </td>
+                  </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </table>
-          <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons>
-          </mat-paginator>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </table>
+            <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons>
+            </mat-paginator>
+          </div>
         </mat-card>
   </div>
 </div><br>

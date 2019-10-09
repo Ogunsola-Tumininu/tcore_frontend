@@ -7,14 +7,14 @@
   <hr>
   <mat-dialog-content>
     <form>
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input matInput placeholder="Name" [(ngModel)]="name" name="name" required>
         <mat-error>
           Customer name is required
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input matInput type="tel" maxlength="11" placeholder="Phone Number" [(ngModel)]="phoneNumber" name="phoneNumber" required>
         <mat-hint align="end">{{phoneNumber.length}} / 11</mat-hint>
         <mat-error>
@@ -22,14 +22,14 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input matInput type="email" placeholder="Email" [(ngModel)]="email" name="email">
         <mat-error>
           Customer email is required
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <input matInput placeholder="Address" [(ngModel)]="address" name="address">
         <mat-error>
           Customer address is required

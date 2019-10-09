@@ -9,18 +9,22 @@ import { CreatePropertyComponent } from './components/property/create-property/c
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+  mobWidth: any;
 
   constructor(
     private dialog: MatDialog,
-  ){}
+  ) {
+    this.mobWidth = (window.screen.width);
+    // console.log(this.mobWidth)
+  }
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
-  addSite(){
+  addSite() {
     let dialogRef = this.dialog.open(CreateSiteComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -29,9 +33,9 @@ export class AdminComponent {
     })
   }
 
-  addProperty(){
+  addProperty() {
     let dialogRef = this.dialog.open(CreatePropertyComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

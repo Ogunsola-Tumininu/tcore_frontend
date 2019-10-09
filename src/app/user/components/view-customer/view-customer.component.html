@@ -1,83 +1,87 @@
-<div class="detail">
+<mat-card class="detail">
   <h2>Customer Details </h2>
-  <button *ngIf="role != 'follow_up'" class=" btn btn-primary pull-right" (click)="openAddAppointmentDialog()"
+  <button *ngIf="role != 'follow_up'" class=" btn btn-primary pull-right mobile-hidden" (click)="openAddAppointmentDialog()"
     style="margin-top: -50px"> Book
     Appointment</button>
-</div>
 
-<div class="col-md-12 property">
-  <div class="col-md-6">
+    <button *ngIf="role != 'follow_up'" class=" btn btn-primary show col-md-12" (click)="openAddAppointmentDialog()"> Book
+    Appointment</button>
+
+</mat-card><br>
+
+<mat-card class="col-md-12 property">
+  <div class="col-md-6 prop no-padding">
     <p> <b>Name: </b></p>
-    <p> {{ customer.name }}</p>
+    <p class="format"> {{ customer.name }}</p>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6 prop no-padding">
     <p> <b>Phone Number: </b></p>
-    <p> {{ customer.phoneNumber }}</p>
+    <p class="format"> {{ customer.phoneNumber }}</p>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6 prop no-padding">
     <p> <b>Email: </b></p>
-    <p> {{ customer.email }}</p>
+    <p class="format"> {{ customer.email }}</p>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6 prop no-padding">
     <p> <b>Address: </b></p>
-    <p> {{ customer.address }}</p>
+    <p class="format"> {{ customer.address }}</p>
   </div>
-</div><br>
+</mat-card>
 
-
-<div class="site-body col-md-12 ">
+<mat-card class="site-body col-md-12 ">
   <h3>Appointments</h3>
+  <p *ngIf="appointLen == 0" style="padding: 20px">You have not created any appointment with the customer. Please click on book appointment to create appointment</p>
   <div *ngFor="let appointment of appointments" class="panel panel-warning">
     <div class="panel-heading">
       <p><b>Follow Up By: </b>{{ appointment.followUp.name}}</p>
       <!-- <mat-icon class="pull-right" style="margin-top: -25px; margin-right: 20px">edit</mat-icon> -->
-      <span *ngIf="role != 'follow_up'" (click)="editAppointment(appointment)"
-        class="glyphicon glyphicon-edit pull-right mobile-hidden" style="margin-top: -25px; cursor: pointer; "></span>
+      <span *ngIf="role != 'presenter'" (click)="editAppointment(appointment)"
+        class="glyphicon glyphicon-edit pull-right " style="margin-top: -25px; cursor: pointer; "></span>
       <p class="pull-right mobile-hidden" style="margin-top: -25px; margin-right: 60px"><b>Scheduled Date:
         </b>{{ appointment.viewDate | date: 'medium'}}</p>
 
     </div>
     <div class="panel-body">
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-4 col-sm-6 prop no-padding">
         <p> <b>Site: </b></p>
-        <p> {{ appointment.site.name }}</p>
+        <p class="format"> {{ appointment.site.name }}</p>
       </div>
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-4 col-sm-6 prop no-padding">
         <p> <b>Property: </b></p>
-        <p> {{ appointment.property }}</p>
+        <p class="format"> {{ appointment.property }}</p>
       </div>
-      <div class="col-md-4 col-sm-6 ">
+      <div class="col-md-4 col-sm-6 prop no-padding ">
         <p> <b>Project: </b></p>
-        <p> {{ appointment.project }}</p>
+        <p class="format"> {{ appointment.project }}</p>
       </div>
 
-      <div *ngIf="appointment.customer != ''" class="col-md-4 col-sm-6 ">
-          <p> <b>Customer Type: </b></p>
-          <p> {{ appointment.customerType }}</p>
-        </div>
+      <div *ngIf="appointment.customerType != ''" class="col-md-12 col-sm-6 prop no-padding ">
+        <p> <b>Customer Type: </b></p>
+        <p class="format"> {{ appointment.customerType }}</p>
+      </div>
 
-      <div class="col-md-4 col-sm-12">
+      <div *ngIf="appointment.inputter" class="col-md-4 col-sm-12 prop no-padding">
         <p> <b>Inputter: </b></p>
-        <p> {{ appointment.inputter.name }}</p>
+        <p class="format"> {{ appointment.inputter.name }}</p>
       </div>
 
-      <div class="col-md-8 col-sm-12">
+      <div *ngIf="appointment.inputter" class="col-md-8 col-sm-12 prop no-padding">
         <p> <b>Remarks: </b></p>
-        <p> {{ appointment.remark }}</p>
+        <p class="format"> {{ appointment.remark }}</p>
       </div>
 
-      <div *ngIf="appointment.presenter" class="col-md-4 col-sm-12">
+      <div *ngIf="appointment.presenter" class="col-md-4 col-sm-12 prop no-padding">
         <p> <b>Presenter: </b></p>
-        <p> {{ appointment.presenter.name }}</p>
+        <p class="format"> {{ appointment.presenter.name }}</p>
       </div>
 
-      <div *ngIf="appointment.presenter" class="col-md-8 col-sm-12">
+      <div *ngIf="appointment.presenter" class="col-md-8 col-sm-12 prop no-padding">
         <p> <b>Presentation Remarks: </b></p>
-        <p> {{ appointment.presentationRemark }}</p>
+        <p class="format"> {{ appointment.presentationRemark }}</p>
       </div>
     </div>
   </div>
-</div>
+</mat-card><br><br>

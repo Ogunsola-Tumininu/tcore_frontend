@@ -31,3 +31,33 @@ th.mat-sort-header-sorted {
   color: black;
 }
 
+mat-card{
+  padding: auto 1px;
+}
+
+.desk-hidden{
+  display: none
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .desk-hidden{
+    display: block;
+  }
+  .mobile-hidden{
+    display:none
+  }
+
+  .mobile-enlarge{
+    width: 800%
+  }
+
+  .no-padding{
+    padding: 1px;
+  }
+
+  div.no-padding h3, div.no-padding p{
+    padding: 10px 20px
+  }
+}
+

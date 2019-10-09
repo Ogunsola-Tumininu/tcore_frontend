@@ -10,8 +10,8 @@ import { AddProjectComponent } from '../add-project/add-project.component';
 import { UpdateProjectComponent } from './update-project/update-project.component';
 import { DelProjectComponent } from './del-project/del-project.component';
 import { MoreLayoutComponent } from './more-layout/more-layout.component';
+import { ShowUploadComponent } from '../../show-upload/show-upload.component';
 
-import * as M from './../../../../../assets/materialize/js/materialize.min.js';
 
 @Component({
   selector: 'app-show-site',
@@ -21,6 +21,8 @@ import * as M from './../../../../../assets/materialize/js/materialize.min.js';
 export class ShowSiteComponent implements OnInit {
 
   site: any = {};
+
+  siteLayouts: any[] = [];
 
   isLoading = true
   projects: any = {}
@@ -57,9 +59,6 @@ export class ShowSiteComponent implements OnInit {
 
     });
 
-    // crousel variable
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, this.options);
 
   }
 
@@ -68,16 +67,19 @@ export class ShowSiteComponent implements OnInit {
       .subscribe((data:any) => {
         if(data.success){
           this.site = data.site;
+          var allSiteLayouts = data.site.uploads;
+          this.siteLayouts =  allSiteLayouts.splice(0,1);
+          // console.log(data.site.uploads);
           this.fetchProjects();
 
-          console.log(this.site)
+          // console.log(this.site)
         }
       })
   }
 
   openAddProjectDialog(){
     let dialogRef = this.dialog.open(AddProjectComponent, {
-      width: '60%',
+      width: '90%',
       data: {siteId : this.site._id,
         }
     });
@@ -90,6 +92,19 @@ export class ShowSiteComponent implements OnInit {
     })
   }
 
+  showUpload(upload){
+    let dialogRef = this.dialog.open(ShowUploadComponent, {
+      width: '97%',
+      height: '100%',
+      data: {upload : upload,
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    })
+  }
+
   fetchProjects(){
     this.adminService.getProjects(this.site._id)
       .subscribe((data:any) => {
@@ -99,9 +114,6 @@ export class ShowSiteComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.isLoading = false;
 
-        // crousel variable
-        var elems = document.querySelectorAll('.carousel');
-        var instances = M.Carousel.init(elems, this.options);
         // console.log('data requested....');
         // console.log(this.dataSource);
       })
@@ -109,7 +121,7 @@ export class ShowSiteComponent implements OnInit {
 
   openDialog(id){
     let dialogRef = this.dialog.open(DelProjectComponent, {
-      width: '60%',
+      width: '70%',
       data: {id : id,
         }
     });
@@ -123,7 +135,7 @@ export class ShowSiteComponent implements OnInit {
 
   openUpdateProjectDialog(project:any){
     let dialogRef = this.dialog.open(UpdateProjectComponent, {
-      width: '60%',
+      width: '90%',
       data: {project : project,
         }
     });
@@ -141,7 +153,7 @@ export class ShowSiteComponent implements OnInit {
 
   openMoreLayoutDialog(){
     let dialogRef = this.dialog.open(MoreLayoutComponent, {
-      width: '60%',
+      width: '90%',
       data: {
         siteId : this.site._id,
         type:'site'

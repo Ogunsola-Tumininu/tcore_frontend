@@ -23,7 +23,7 @@ export class EditPropertyComponent implements OnInit {
 
   sites: any[] = [];
   projects: any[] = [];
-  types: any[] = [];
+  types: any;
 
   constructor(
     private thisDialogRef: MatDialogRef<EditPropertyComponent>,
@@ -66,6 +66,7 @@ export class EditPropertyComponent implements OnInit {
     this.adminService.getTypes(proName)
       .subscribe((data: any) => {
         this.types = data.projects;
+        this.project_type = '';
       })
   }
 

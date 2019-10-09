@@ -8,6 +8,7 @@ import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { ViewCustomerComponent } from './components/view-customer/view-customer.component';
 import { FollowUpComponent } from './components/follow-up/follow-up.component';
 import { PresenterComponent } from './components/presenter/presenter.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
         component: UserComponent,
         children: [
             // { path: '', component: DashbordComponent },
+            { path: 'change-password', component: ChangePasswordComponent, canActivate:[AuthGuard] },
             { path: 'inputter', component: DashbordComponent, canActivate:[AuthGuard] },
             { path: 'customer/:id', component: ViewCustomerComponent, canActivate:[AuthGuard] },
             { path: 'followup', component: FollowUpComponent, canActivate:[AuthGuard] },

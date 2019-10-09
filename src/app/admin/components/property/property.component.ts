@@ -19,6 +19,8 @@ export class PropertyComponent implements OnInit {
   displayedColumns=['name','site', 'project', 'cost', 'actions'];
   dataSource: any;
 
+  mobWidth: any
+
   @ViewChild(MatPaginator) paginator : MatPaginator;
   @ViewChild(MatSort) sort : MatSort;
   constructor(
@@ -26,7 +28,9 @@ export class PropertyComponent implements OnInit {
     private toastr: ToastrService,
     private dialog: MatDialog,
     private router: Router
-  ) { }
+  ) {
+    this.mobWidth = (window.screen.width);
+   }
 
   ngOnInit() {
     this.fetchProperties()
@@ -56,7 +60,7 @@ export class PropertyComponent implements OnInit {
 
   openDialog(id){
     let dialogRef = this.dialog.open(DelPropertyComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '40%',
       data: {id : id,
         }
     });
@@ -68,7 +72,7 @@ export class PropertyComponent implements OnInit {
 
   openUpdatePropertyDialog(property:any){
     let dialogRef = this.dialog.open(EditPropertyComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
       data: {property: property,
         }
     });

@@ -23,6 +23,8 @@ export class FollowUpComponent implements OnInit {
   displayedColumns = ['customer', 'site', 'property', 'date', 'status'];
   dataSource: any;
 
+  mobWidth: any;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -32,7 +34,9 @@ export class FollowUpComponent implements OnInit {
     private toastr: ToastrService,
     private dialog: MatDialog,
     private router: Router
-  ) { }
+  ) {
+    this.mobWidth = (window.screen.width);
+  }
 
   ngOnInit() {
     this.confirmRole();
@@ -89,7 +93,7 @@ export class FollowUpComponent implements OnInit {
 
   allocatePresenter(appId) {
     let dialogRef = this.dialog.open(AllocatePresenterComponent, {
-      width: '60%',
+      width: (this.mobWidth < 768) ?  '95%' : '60%',
       data: {
         appointId: appId
       }

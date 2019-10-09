@@ -5,6 +5,10 @@ table, th, td{
   width: 100%;
 }
 
+table{
+  width: 100% !important
+}
+
 td.mat-cell, td.mat-footer-cell, th.mat-header-cell{
   border: none
 }
@@ -12,3 +16,27 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell{
 th.mat-sort-header-sorted {
   color: black;
 }
+
+
+mat-card{
+  padding: auto 1px;
+}
+
+.desk-hidden{
+  display: none
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .desk-hidden{
+    display: block;
+  }
+  .mobile-hidden{
+    display:none
+  }
+
+  .mobile-enlarge{
+    width: 800%
+  }
+}
+

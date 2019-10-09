@@ -59,7 +59,7 @@ export class ViewCustomerComponent implements OnInit {
         if(data.success){
           this.appointments = data.appointments;
           this.appLen = this.appointments.length;
-          // console.log(this.appointments)
+          console.log(this.appointments)
         }
       })
   }

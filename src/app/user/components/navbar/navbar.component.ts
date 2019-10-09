@@ -30,4 +30,9 @@ export class NavbarComponent implements OnInit {
     this.user = null;
     return false
   }
+
+  onNavClick() {
+    let nav = document.getElementById('tog').click();
+
+  }
 }

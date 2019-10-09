@@ -69,6 +69,7 @@ import { EditPropertyComponent } from './components/property/edit-property/edit-
 import { ViewPropertyComponent } from './components/property/view-property/view-property.component';
 import { ViewCustomerComponent } from './components/view-customer/view-customer.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { ShowUploadComponent } from './components/show-upload/show-upload.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     EditPropertyComponent,
     ViewPropertyComponent,
     ViewCustomerComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ShowUploadComponent
 
   ],
   imports: [
@@ -164,6 +166,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     UploadFloorComponent,
     DelPropertyComponent,
     EditPropertyComponent,
+    ShowUploadComponent
 
   ],
   providers: [ValidateService, AuthService, AdminService, AuthGuard],

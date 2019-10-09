@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatPaginator, MatDialog } from '@angular/material';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { DelUserComponent } from './del-user/del-user.component';
 import { AdminService } from 'src/app/services/admin.service';
@@ -11,6 +13,7 @@ import { AdminService } from 'src/app/services/admin.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+
 export class UsersComponent implements OnInit {
   isLoading = true
   users: any = {}
@@ -18,18 +21,24 @@ export class UsersComponent implements OnInit {
   displayedColumns=['name','email','role', 'actions'];
   dataSource: any;
 
+  mobWidth: any
+
   @ViewChild(MatPaginator) paginator : MatPaginator;
   @ViewChild(MatSort) sort : MatSort;
+
   constructor(
     private adminService: AdminService,
     private toastr: ToastrService,
     private dialog: MatDialog,
     private router: Router
-  ) { }
+  ) {
+    this.mobWidth = (window.screen.width);
+   }
 
   ngOnInit() {
     this.fetchUsers()
   }
+
 
   fetchUsers(){
     this.adminService.getUsers()
@@ -46,7 +55,7 @@ export class UsersComponent implements OnInit {
 
   openDialog(id){
     let dialogRef = this.dialog.open(DelUserComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '40%',
       data: {id : id,
         }
     });
@@ -61,7 +70,7 @@ export class UsersComponent implements OnInit {
 
   openUpdateUserDialog(user:any){
     let dialogRef = this.dialog.open(UpdateUserComponent, {
-      width: '60%',
+      width:(this.mobWidth < 768) ?  '95%' : '60%',
       data: {user : user,
         }
     });

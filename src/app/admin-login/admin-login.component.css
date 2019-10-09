@@ -6,7 +6,8 @@ div.loginImage{
 
 div.admin{
   background: url('/assets/bg.jpg') no-repeat;
-  margin-top: 8%
+  margin-top: 8%;
+  padding: 20px
 }
 
 .login{
@@ -64,3 +65,5 @@ mat-form-field{
   width: 100%;
   font-size: 1.2em
 }
+
+

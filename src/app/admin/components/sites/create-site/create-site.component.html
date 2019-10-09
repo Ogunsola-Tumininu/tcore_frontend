@@ -1,7 +1,7 @@
 <div>
   <div mat-dialog-title>
     <h3>Add Site
-      <mat-icon class="pull-right" (click)="onCloseCancel()">close</mat-icon>
+      <mat-icon class="pull-right" style="font-size: 0.8em" (click)="onCloseCancel()">close</mat-icon>
     </h3>
   </div>
   <hr>
@@ -21,15 +21,15 @@
         </mat-error>
       </mat-form-field>
 
-      <div class="col-md-6" style="padding-left: 0px !important ">
-        <button mat-raised-button (click)="openInput()" style="width:255px; height:auto;">
+      <div class="col-md-6" style="padding-left: 0px !important ; margin-bottom: 20px">
+        <button mat-raised-button (click)="openInput()" style="width: 90%">
           Upload Site Layouts
         </button>
         <!-- <img src="/assets/upload.png" style="width:30%" (click)="openInput()" alt="UploadImage"> -->
       </div>
 
-      <div class="col-md-6" style="min-width: 50%">
-        <img *ngIf="imageUrl !== ''" [src]=imageUrl alt="UploadImage" style="width:80%; height:auto;">
+      <div class="col-md-6">
+        <img *ngIf="imageUrl !== ''" [src]=imageUrl alt="UploadImage" style="width:90%; height:auto;">
         <!-- <img id="originalImage" [src]=originalImageUrl alt=" Original User Image"  style="display: none"> -->
       </div>
 
@@ -37,7 +37,7 @@
       <input id="fileInput" style="display: none" type="file" #img (change)="fileChange($event.target.files)" name="img"
         accept="image/*">
     </form>
-    <br><br>
+
   </mat-dialog-content>
 
   <mat-dialog-actions>

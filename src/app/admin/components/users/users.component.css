@@ -13,7 +13,13 @@ th.mat-sort-header-sorted {
   color: black;
 }
 
-.site-header{
-  background-color: white;
-  padding: 10px 30px 10px 30px;
+.example-container {
+  width: 100%;
+  overflow: auto;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .mobile-hidden{
+    display: none;
+  }
 }

@@ -1,4 +1,4 @@
-@import "./../../../../../assets/materialize/css/materialize.min.css";
+/* @import "./../../../../../assets/materialize/css/materialize.min.css"; */
 .site-header{
   background-color: white;
   padding: 10px 30px 10px 30px;
@@ -27,6 +27,13 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell{
 
 th.mat-sort-header-sorted {
   color: black;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .site-body, .no-padding{
+    padding: 0px
+  }
 }
 
 /* img{

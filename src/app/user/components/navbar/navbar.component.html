@@ -1,27 +1,34 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" routerLinkActive="Active">Tcore</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar">
-          <li *ngIf="role ==='inputter' && auth.loggedIn()" ><a routerLink="/user/inputter" routerLinkActive="Active" >Home</a></li>
-          <li *ngIf="role ==='presenter' && auth.loggedIn()" ><a routerLink="/user/presenter" routerLinkActive="Active" >Home</a></li>
-          <li *ngIf="role ==='follow_up' && auth.loggedIn()" ><a routerLink="/user/followup" routerLinkActive="Active" >Home</a></li>
-          <!-- <li *ngIf="auth.isUser() || auth.loggedIn()"><a routerLink="/user/profile" routerLinkActive="Active">Profile</a></li> -->
-          <!-- <li *ngIf="auth.isUser() || auth.loggedIn()"><a routerLink="/user/dashboard" routerLinkActive="Active">Dashboard</a></li> -->
-
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <!-- <li *ngIf="!auth.loggedIn()"><a routerLink="/user/register" routerLinkActive="Active"><span class="glyphicon glyphicon-user"></span> Register</a></li> -->
-          <li *ngIf="!auth.loggedIn()"><a routerLink="/login" routerLinkActive="Active"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          <li *ngIf="auth.loggedIn()"><a href='#' (click)="onLogoutClick()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-        </ul>
-      </div>
+<nav class="navbar navbar-inverse stat">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" id="tog" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLinkActive="Active">Tcore</a>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar">
+        <li *ngIf="role ==='inputter' && auth.loggedIn()" (click)="onNavClick()"><a routerLink="/user/inputter"
+            routerLinkActive="Active">Home</a></li>
+        <li *ngIf="role ==='presenter' && auth.loggedIn()" (click)="onNavClick()"><a routerLink="/user/presenter"
+            routerLinkActive="Active">Home</a></li>
+        <li *ngIf="role ==='follow_up' && auth.loggedIn()" (click)="onNavClick()"><a routerLink="/user/followup"
+            routerLinkActive="Active">Home</a></li>
+        <!-- <li *ngIf="auth.isUser() || auth.loggedIn()"><a routerLink="/user/profile" routerLinkActive="Active">Profile</a></li> -->
+        <!-- <li *ngIf="auth.isUser() || auth.loggedIn()"><a routerLink="/user/dashboard" routerLinkActive="Active">Dashboard</a></li> -->
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="auth.loggedIn()" (click)="onNavClick()"><a routerLink="/user/change-password" routerLinkActive="Active"><span
+              class="glyphicon glyphicon-key"></span> Change Password</a></li>
+        <!-- <li *ngIf="!auth.loggedIn()"><a routerLink="/user/register" routerLinkActive="Active"><span class="glyphicon glyphicon-user"></span> Register</a></li> -->
+        <li *ngIf="!auth.loggedIn()" (click)="onNavClick()"><a routerLink="/login" routerLinkActive="Active"><span
+              class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="auth.loggedIn()" (click)="onNavClick()"><a href='#' (click)="onLogoutClick()"><span
+              class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

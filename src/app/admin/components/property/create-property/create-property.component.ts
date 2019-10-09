@@ -23,7 +23,7 @@ export class CreatePropertyComponent implements OnInit {
 
   sites: any[] = [];
   projects: any[] = [];
-  types: any[] = [];
+  types: any ;
 
   constructor(
     private thisDialogRef: MatDialogRef<CreatePropertyComponent>,
@@ -57,6 +57,7 @@ export class CreatePropertyComponent implements OnInit {
     this.adminService.getTypes(proName)
       .subscribe((data: any) => {
         this.types = data.projects;
+
       })
   }
 

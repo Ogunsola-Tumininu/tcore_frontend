@@ -14,7 +14,10 @@ export class AuthService {
   user: any
   usertype: any;
 
+  id = localStorage.getItem('userId');
+
   url = 'http://localhost:8080';
+  // url ='';
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
@@ -27,6 +30,11 @@ export class AuthService {
   authenticateUser(user) {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     return this.http.post(`${this.url}/users/authenticate`, user, { headers: headers })
+  }
+
+  changePassword(user) {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+    return this.http.post(`${this.url}/users/change-password/${this.id}`, user, { headers: headers })
   }
 
   authenticateAdmin(admin) {

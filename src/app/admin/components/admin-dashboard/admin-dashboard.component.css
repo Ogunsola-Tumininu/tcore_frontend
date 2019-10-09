@@ -13,10 +13,6 @@ th.mat-sort-header-sorted {
   color: black;
 }
 
-.site-header{
-  background-color: white;
-  padding: 10px 30px 10px 30px;
-}
 
 .p-0{
   padding: 0px;
@@ -25,3 +21,22 @@ th.mat-sort-header-sorted {
 .align{
   text-align: center !important;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .middle{
+    padding: 0;
+
+  }
+
+  .align{
+    margin-bottom: 20px
+  }
+
+  /* For mobile phones: */
+  .mobile-hidden{
+    display: none;
+  }
+}
+
+

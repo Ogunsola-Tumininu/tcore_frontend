@@ -7,40 +7,40 @@
   <hr>
   <mat-dialog-content>
     <form>
-      <mat-form-field style="width: 33%">
+      <mat-form-field class="col-md-4">
         <mat-select placeholder="Site" [disabled]="true" name="site" [(ngModel)]="site" >
             <mat-option *ngIf="site" selected="selected" [value]="site">{{ site.name }}</mat-option>
           <mat-option *ngFor="let site of sites" [value]="site">{{site.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field style="width: 33%">
+      <mat-form-field class="col-md-4">
         <mat-select placeholder="Project Name" name="project_name" [(ngModel)]="projectName">
           <mat-option *ngFor="let project of projects" [value]="project.name">{{project.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field style="width: 33%">
+      <mat-form-field class="col-md-4">
         <mat-select placeholder="Property" name="property_name" [(ngModel)]="property">
           <mat-option *ngFor="let property of properties" [value]="property.name">{{ property.name }}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
           <input matInput [matDatepicker]="picker" placeholder="Appointment Date" name="viewDate" [value]="viewDate" [(ngModel)]="viewDate"
             required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-      <mat-form-field style="width: 50%">
+      <mat-form-field class="col-md-6">
         <mat-select placeholder="Follow Up" name="followUp" [(ngModel)]="followUp">
           <mat-option *ngIf="followUp" selected="selected" [value]="followUp">{{ followUp.name }}</mat-option>
           <mat-option *ngFor="let followUp of users" [value]="followUp">{{ followUp.name }}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field style="width: 100%">
+      <mat-form-field class="col-md-12">
         <textarea matInput placeholder="Remarks" [(ngModel)]="remarks" name="remarks"
           rows="4"></textarea>
       </mat-form-field>

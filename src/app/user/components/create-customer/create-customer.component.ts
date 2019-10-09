@@ -72,7 +72,7 @@ export class CreateCustomerComponent implements OnInit {
         this.toastr.success('Successfully', 'Customer created.', { timeOut: 5000 });
         this.thisDialogRef.close();
         this.showWait = false;
-        // this.router.navigate(['/user/customer/' + data['customer']._id ])
+        this.router.navigate(['/user/customer/' + data['customer']._id ])
 
       }
       else{
