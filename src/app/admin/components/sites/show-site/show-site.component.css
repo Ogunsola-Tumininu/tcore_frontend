@@ -29,12 +29,34 @@ th.mat-sort-header-sorted {
   color: black;
 }
 
+.btn{
+  margin-top: -55px
+}
+
+img{
+  width: 100%
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .site-body, .no-padding{
     padding: 0px
   }
+
+  .site-header h2{
+    font-size: 1.2em
+  }
+
+  .btn{
+    margin-top: -35px
+  }
+
+  .mobile-hidden{
+    display: none
+  }
 }
+
+
 
 /* img{
   width: 100%;

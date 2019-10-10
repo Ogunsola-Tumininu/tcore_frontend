@@ -36,7 +36,7 @@
 
       <mat-form-field  class="col-md-4">
         <mat-select placeholder="Project Type" name="project_type" [(ngModel)]="project_type">
-          <mat-option *ngFor="let type of types.type" [value]="type">{{ type }}</mat-option>
+          <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
 

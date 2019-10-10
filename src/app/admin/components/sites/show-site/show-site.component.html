@@ -1,56 +1,13 @@
 <mat-card class="site-header">
   <h2> <b>Site Name: </b>{{ site.name }}</h2>
+
   <p style="color: grey"><b>Location: </b>{{site.location}}</p>
-  <button class=" btn btn-primary pull-right" (click)="openAddProjectDialog()" style="margin-top: -60px"> Add
+  <button class=" btn btn-primary pull-right" (click)="openAddProjectDialog()"> Add
     Project</button>
 </mat-card><br>
 
 <mat-card class="site-body col-md-12">
-
-  <div class="col-md-6 no-padding">
-    <div class="panel panel-warning">
-      <div class="panel-heading">
-        <p>Layouts</p>
-        <button class=" btn btn-primary pull-right" (click)="openMoreLayoutDialog()" style="margin-top: -33px"> Add More
-          Layout</button>
-      </div>
-      <div class="panel-body">
-        <!-- <img *ngFor="let layout of site.uploads" mat-card-image src="{{layout.url}}" alt="layout image"> -->
-        <div>
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li *ngFor="let layout of siteLayouts; let index = index" data-target="#myCarousel" data-slide-to="0"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-              <div class="item active">
-                <a style="width:100%;"><img (click)="showUpload(site.uploads[0])" class="img img-responsive" src="{{site.uploads[0].url}}"></a>
-              </div>
-
-              <div class="item">
-                  <a *ngFor="let layout of siteLayouts"><img (click)="showUpload(layout)" class="img img-responsive" src="{{layout.url}}"></a>
-              </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <img *ngFor="let layout of site.uploads" mat-card-image src="{{layout.url}}" alt="Photo of a Shiba Inu"> -->
-  </div>
-  <div class="col-md-6 no-padding">
+  <div class="col-md-12 no-padding">
     <div class="panel panel-success">
       <div class="panel-heading">
         <p>Projects</p>
@@ -59,7 +16,7 @@
         <div *ngIf="isLoading">
           <mat-spinner></mat-spinner>
         </div>
-        <mat-card >
+        <mat-card>
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
           </mat-form-field>
@@ -75,9 +32,9 @@
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="type">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-              <td mat-cell *matCellDef="let project"> {{project.type}} </td>
+            <ng-container matColumnDef="type" class="mobile-hidden">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="mobile-hidden"> Type </th>
+              <td mat-cell *matCellDef="let project" class="mobile-hidden"> {{project.type}} </td>
             </ng-container>
 
             <ng-container matColumnDef="actions">
@@ -100,4 +57,52 @@
       </div>
     </div>
   </div>
+
+  <div class="col-md-12 no-padding">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <p>Layouts</p>
+        <button class=" btn btn-primary pull-right" (click)="openMoreLayoutDialog()" style="margin-top: -33px"> Add More
+          Layout</button>
+      </div>
+      <div class="panel-body">
+        <!-- <img *ngFor="let layout of site.uploads" mat-card-image src="{{layout.url}}" alt="layout image"> -->
+        <div>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li *ngFor="let layout of siteLayouts; let index = index" data-target="#myCarousel" data-slide-to="0">
+              </li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <a style="width:100%;"><img (click)="showUpload(site.uploads[0])" class="img img-responsive"
+                    src="{{site.uploads[0].url}}"></a>
+              </div>
+
+              <div class="item">
+                <a *ngFor="let layout of siteLayouts"><img (click)="showUpload(layout)" class="img img-responsive"
+                    src="{{layout.url}}"></a>
+              </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <img *ngFor="let layout of site.uploads" mat-card-image src="{{layout.url}}" alt="Photo of a Shiba Inu"> -->
+  </div>
+
 </mat-card>
